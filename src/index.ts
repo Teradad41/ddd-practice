@@ -1,7 +1,12 @@
-import { Money } from "./domains/value-objects/Money";
+import { supabase } from "./db";
 
-const money1 = new Money(3000, "JPY");
-const money2 = new Money(10000, "USD");
-const result = money1.add(money2);
+async function main() {
+  try {
+    const { data } = await supabase.from("tasks").select("*");
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-console.log(result.getAmount());
+main();

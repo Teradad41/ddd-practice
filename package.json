@@ -1,12 +1,14 @@
 {
-  "name": "ddd-practice",
-  "scripts": {
-    "dev": "bun run src/index.ts"
-  },
-  "dependencies": {
-    "hono": "^4.7.10"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  }
+	"name": "ddd-practice",
+	"module": "types",
+	"scripts": {
+		"dev": "bun run src/index.ts"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.49.4",
+		"hono": "^4.7.10"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	}
 }

@@ -2,15 +2,11 @@
 	"name": "ddd-practice",
 	"module": "types",
 	"scripts": {
-		"dev": "bun run src/index.ts",
-		"test": "jest"
+		"dev": "bun run src/index.ts"
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.49.4",
-		"@types/jest": "^29.5.14",
-		"hono": "^4.7.10",
-		"jest": "^29.7.0",
-		"ts-jest": "^29.3.4"
+		"hono": "^4.7.10"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"

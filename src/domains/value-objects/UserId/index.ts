@@ -1,11 +1,15 @@
 export class UserId {
-	public _userId: number;
+	private _userId: string;
 
-	constructor(userId: number) {
+	constructor(userId: string) {
 		if (!userId) {
 			throw new Error("userId の値が不正です");
 		}
 		this._userId = userId;
+	}
+
+	get value(): string {
+		return this._userId;
 	}
 
 	public equals(other: UserId): boolean {
@@ -13,9 +17,5 @@ export class UserId {
 			return false;
 		}
 		return this._userId === other._userId;
-	}
-
-	get(): number {
-		return this._userId;
 	}
 }

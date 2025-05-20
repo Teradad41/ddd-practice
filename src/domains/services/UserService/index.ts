@@ -1,18 +1,18 @@
-import type { User } from "../../entities/User";
-import type { IUserRepository } from "../../repositories/i-userRepository";
+import type { User } from "@/domains/entities/User";
+import type { IUserRepository } from "@/domains/repositories/i-userRepository";
 
 // ドメインサービスは状態を持たないクラス
 export class UserService {
-	private _userRepository: IUserRepository;
+	private readonly _userRepository: IUserRepository;
 
 	constructor(userRepository: IUserRepository) {
 		this._userRepository = userRepository;
 	}
 
-	public async exists(name: string): Promise<boolean> {
+	public async exists(user: User): Promise<boolean> {
 		try {
-			await this._userRepository.find(name);
-			return true;
+			const duplicatedUser = await this._userRepository.find(user.userId);
+			return duplicatedUser !== null;
 		} catch (error) {
 			return false;
 		}

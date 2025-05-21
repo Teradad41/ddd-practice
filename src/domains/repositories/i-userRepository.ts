@@ -6,5 +6,6 @@ import type { UserName } from "../value-objects/UserName";
 export interface IUserRepository {
 	save(user: User): Promise<void>;
 	find(arg: UserName | UserId): Promise<User | null>;
+	findAll(): Promise<User[] | null>;
 	delete(user: User): void;
 }

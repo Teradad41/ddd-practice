@@ -12,8 +12,9 @@ export class User {
 	private readonly _userId: UserId;
 	private _name: UserName;
 
-	constructor(name: UserName) {
-		this._userId = new UserIdImpl(uuidv4());
+
+	constructor(name: UserName, userId?: string) {
+		this._userId = new UserId(userId ?? uuidv4());
 		this._name = name;
 	}
 

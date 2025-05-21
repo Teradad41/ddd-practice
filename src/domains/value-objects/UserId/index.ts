@@ -1,5 +1,3 @@
-import type { UUIDTypes } from "uuid";
-
 /**
  * ユーザーIDを表す値オブジェクト
  *
@@ -7,9 +5,9 @@ import type { UUIDTypes } from "uuid";
  * @description ユーザーを一意に識別するためのIDを表現する値オブジェクト
  */
 export class UserId {
-	private readonly _userId: UUIDTypes;
+	private readonly _userId: string;
 
-	constructor(userId: UUIDTypes) {
+	constructor(userId: string) {
 		if (!userId) {
 			throw new Error("userId の値が不正です");
 		}
@@ -29,7 +27,7 @@ export class UserId {
 		return this._userId === other.value;
 	}
 
-	get value(): UUIDTypes {
+	get value(): string {
 		return this._userId;
 	}
 }

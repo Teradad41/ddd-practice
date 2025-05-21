@@ -14,8 +14,7 @@ export class UserDeleteUseCase {
 		const foundUser = await this._userRepository.find(targetId);
 
 		if (!foundUser) {
-			// 対象が見つからなかったため成功とする
-			return;
+			return; // 対象が見つからなかったら成功とする
 		}
 
 		this._userRepository.delete(foundUser);

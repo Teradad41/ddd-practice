@@ -1,5 +1,4 @@
-import type { UserId } from "@/domains/value-objects/UserId";
-import { UserId as UserIdImpl } from "@/domains/value-objects/UserId";
+import { UserId } from "@/domains/value-objects/UserId";
 import type { UserName } from "@/domains/value-objects/UserName";
 import { v4 as uuidv4 } from "uuid";
 
@@ -12,8 +11,8 @@ export class User {
 	private readonly _userId: UserId;
 	private _name: UserName;
 
-	constructor(name: UserName) {
-		this._userId = new UserIdImpl(uuidv4());
+	constructor(name: UserName, userId?: string) {
+		this._userId = new UserId(userId ?? uuidv4());
 		this._name = name;
 	}
 

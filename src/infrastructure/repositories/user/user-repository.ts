@@ -7,8 +7,8 @@ import { supabase } from "lib/db";
 export class UserRepository implements IUserRepository {
 	async save(user: User): Promise<void> {
 		const { error } = await supabase.from("users").insert({
-			user_id: user.userId,
-			name: user.name,
+			user_id: user.userId.value,
+			name: user.name.value,
 		});
 
 		if (error) {
@@ -27,10 +27,10 @@ export class UserRepository implements IUserRepository {
 			query = query.eq("user_id", param.value);
 		}
 
-		const { data, error } = await query.single();
+		const { data, error } = await query.maybeSingle();
 
 		if (error) {
-			throw new Error(`Error: ${error}`);
+			throw new Error(`${error.message}`);
 		}
 
 		if (!data) {

@@ -24,7 +24,7 @@ export class UserService {
 	 */
 	public async exists(user: User): Promise<boolean> {
 		try {
-			const existingUser = await this._userRepository.find(user.userId);
+			const existingUser = await this._userRepository.find(user.name);
 			return existingUser !== null;
 		} catch (error) {
 			throw new Error(

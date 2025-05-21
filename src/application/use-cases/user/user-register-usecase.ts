@@ -17,7 +17,7 @@ export class UserRegisterUserCase {
 		const isExists = await this._userService.exists(user);
 
 		if (isExists) {
-			throw new Error(`${user.name}は既に存在しています`);
+			throw new Error(`${user.name.value}は既に存在しています`);
 		}
 
 		this._userRepository.save(user);

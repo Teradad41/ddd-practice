@@ -5,9 +5,10 @@
  * @description ユーザーを一意に識別するためのIDを表現する値オブジェクト
  */
 export class UserId {
+
 	private readonly _userId: string;
 
-	constructor(userId: string) {
+	constructor(userId: UUIDTypes) {
 		if (!userId) {
 			throw new Error("userId の値が不正です");
 		}
@@ -26,6 +27,7 @@ export class UserId {
 		}
 		return this._userId === other.value;
 	}
+
 
 	get value(): string {
 		return this._userId;

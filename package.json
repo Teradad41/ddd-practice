@@ -2,13 +2,18 @@
 	"name": "ddd-practice",
 	"module": "types",
 	"scripts": {
-		"dev": "bun run src/index.ts"
+		"dev": "bun run src/index.ts",
+		"format": "bun biome format --write ./src"
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.49.4",
-		"hono": "^4.7.10"
+		"@types/uuid": "^10.0.0",
+		"hono": "^4.7.10",
+		"lefthook": "^1.11.13",
+		"uuid": "^11.1.0"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
 		"@types/bun": "latest"
 	}
 }

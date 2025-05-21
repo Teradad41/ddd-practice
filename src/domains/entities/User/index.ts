@@ -1,25 +1,31 @@
-import { UserId } from "@/domains/value-objects/UserId";
+import type { UserId } from "@/domains/value-objects/UserId";
+import { UserId as UserIdImpl } from "@/domains/value-objects/UserId";
 import type { UserName } from "@/domains/value-objects/UserName";
+import { v4 as uuidv4 } from "uuid";
 
-// userId により一意に識別されるエンティティ
+/**
+ * ユーザーを表すエンティティ
+ * @class User
+ * @description ユーザーIDにより一意に識別されるエンティティ。ユーザー名の変更のみ可能
+ */
 export class User {
 	private readonly _userId: UserId;
 	private _name: UserName;
 
 	constructor(name: UserName) {
-		this._userId = new UserId(Math.floor(Math.random() * 1000000) + 1);
+		this._userId = new UserIdImpl(uuidv4());
 		this._name = name;
 	}
 
-	public changeName(name: string) {
-		if (!name) {
+	public changeName(userName: UserName) {
+		if (!userName) {
 			throw new Error("name が不正です");
 		}
-		if (name.length < 3) {
+		if (userName.value.length < 3) {
 			throw new Error("名前は３文字以上である必要があります");
 		}
 
-		this._name = name;
+		this._name = userName;
 	}
 
 	public equals(other: User): boolean {
@@ -34,7 +40,7 @@ export class User {
 		return this._userId;
 	}
 
-	get name(): string {
+	get name(): UserName {
 		return this._name;
 	}
 }
